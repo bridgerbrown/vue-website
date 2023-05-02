@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <link href="/dist/output.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <nav class="bg-blue-900 text-white w-full h-24">
+      <div class="flex justify-between">
+        <a href="#">Website</a>
+        <ul>
+          <li v-for="link in links" :key="">
+            <a :href="link.url" class="" aria-current="page">{{ link.text }}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
