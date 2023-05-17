@@ -12,8 +12,8 @@
 
   <body>
     <nav 
-      class="text-white w-full py-6 px-4"
-      :class="{'bg-stone-100 text-black': !useDark, 'bg-stone-900 text-white': useDark}"
+      class="w-full py-6 px-4"
+      :class="[`navbar-${theme}`, `bg-${theme}`]"
     >
       <div class="flex justify-between items-center">
         <a href="#"
@@ -28,6 +28,8 @@
                 class="cursor-pointer" 
                 :class="{active: activePage == index}"
                 aria-current="page"
+                :href="page.link.url"
+                :title="`This link goes to the ${page.link.text} page`"
                 @click.prevent="activePage = index"
               >
                   {{ page.link.text }}
@@ -39,7 +41,7 @@
           >
             <button
               class="w-8 h-8 rounded-full bg-stone-300"
-              @click.prevent="useDark = !useDark"
+              @click.prevent="changeTheme()"
             >
               Mode
             </button>
@@ -62,7 +64,7 @@
         data() {
           return {
             activePage: 0,
-            useDark: false,
+            theme: 'light',
             pages: [
               {
                 link: {text: 'Home', url: 'index.html'},
@@ -81,6 +83,17 @@
               }
             ]
           };
+        },
+        methods: {
+          changeTheme() {
+            let theme = 'light';
+
+            if (this.theme == 'light') {
+              theme = 'dark';
+            }
+
+            this.theme = theme;
+          }
         }
       }).mount('body')
     </script>

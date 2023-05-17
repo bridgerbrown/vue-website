@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+    color: blue;
+}
+
+.navbar-light {
+    color: black;
+    background-color: lightgray;
+}
+
+.navbar-dark {
+    color: white;
+    background-color: black;
+}
