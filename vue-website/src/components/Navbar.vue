@@ -12,16 +12,13 @@
         <div class="flex space-x-6">
             <ul class="flex space-x-6">
             <li v-for="(page, index) in pages" :key="index">
-                <a 
-                class="cursor-pointer" 
-                :class="{active: activePage == index}"
-                aria-current="page"
-                :href="page.link.url"
-                :title="`This link goes to the ${page.link.text} page`"
-                @click.prevent="navLinkClick(index)"
+                <navbar-link
+                    :page="page"
+                    :isActive="activePage == index"
+                    @click.prevent="navLinkClick(index)"
                 >
-                    {{ page.link.text }}
-                </a>
+
+                </navbar-link>
             </li>
             </ul>
             <form action=""
@@ -40,7 +37,15 @@
 </template>
 
 <script>
+    import NavbarLink from './NavbarLink.vue';
+    
     export default {
+        components: {
+            NavbarLink
+        },
+        created() {
+            this.getThemeSetting();
+        },
         props: ['pages', 'activePage', 'theme', 'navLinkClick'],
         data() {
           return {
@@ -56,7 +61,18 @@
             }
 
             this.theme = theme;
+            this.storeThemeSetting();
+          },
+          storeThemeSetting() {
+            localStorage.setItem('theme', this.theme);
+          },
+          getThemeSetting() {
+            let theme = localStorage.getItem('theme');
+
+            if (theme) {
+                this.theme = theme;
+            }
+          },
           }
         }
-    }
 </script>
