@@ -11,7 +11,7 @@
         </a>
         <div class="flex space-x-6">
             <ul class="flex space-x-6">
-            <li v-for="(page, index) in pages" :key="index">
+            <li v-for="(page, index) in publishedPages" :key="index">
                 <navbar-link
                     :page="page"
                     :isActive="activePage == index"
@@ -45,6 +45,11 @@
         },
         created() {
             this.getThemeSetting();
+        },
+        computed: {
+          publishedPages() {
+            return this.pages.filter(p => p.published);
+          }
         },
         props: ['pages', 'activePage', 'theme', 'navLinkClick'],
         data() {

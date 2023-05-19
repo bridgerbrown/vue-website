@@ -14,7 +14,7 @@
   </page-viewer> -->
 
   <create-page
-    :page-created="pageCreated"
+    @page-created="pageCreated"
   ></create-page>
 </template>
 
@@ -46,7 +46,7 @@
         this.pages = data;
       },
       pageCreated(pageObj) {
-        console.log(pageObj);
+        this.pages.push(pageObj);
       }
     }
   };
