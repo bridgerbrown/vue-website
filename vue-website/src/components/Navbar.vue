@@ -11,16 +11,26 @@
         </a>
         <div class="flex space-x-6">
             <ul class="flex space-x-6">
-            <li v-for="(page, index) in publishedPages" :key="index">
-                <navbar-link
-                    :page="page"
-                    :index="index"
-                    :isActive="activePage == index"
-                    @actived="$emit('actived')"
-                >
+              <li v-for="(page, index) in publishedPages" :key="index">
+                  <navbar-link
+                      :page="page"
+                      :index="index"
+                      :isActive="activePage == index"
+                      @actived="$emit('actived')"
+                  >
 
-                </navbar-link>
-            </li>
+                  </navbar-link>
+              </li>
+              
+              <li>
+                <router-link
+                to="/create"
+                class="cursor-pointer" 
+                aria-current="page"
+                >
+                    Create Page
+                </router-link>
+              </li>
             </ul>
             <form action=""
             class="flex"

@@ -1,15 +1,14 @@
 <template>
     <li>
-        <a 
+        <router-link
+        :to="`/${index}`"
         class="cursor-pointer" 
         :class="{active: activePage == index}"
         aria-current="page"
-        :href="page.link.url"
         :title="`This link goes to the ${page.link.text} page`"
-        @click.prevent="$bus.$emit('navbarLinkActivated', index)"
         >
             {{ page.link.text }}
-        </a>
+        </router-link>
     </li>
 </template>
 
